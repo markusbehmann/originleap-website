@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — OriginLeap</title>
+<meta name="description" content="Questions, feedback, or press inquiries for OriginLeap — get in touch directly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4F5F8; --surface:#FFFFFF; --surface-alt:#EBE7FF;
+    --primary:#9153FF; --primary-dark:#5815B7;
+    --ink:#0C0D12; --ink-dim:#535461; --ink-faint:#8D8E98;
+    --void:#0C0D12;
+    --shadow-sm: 0 8px 24px rgba(88,21,183,0.10);
+    --shadow: 0 20px 50px rgba(88,21,183,0.16);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Manrope',system-ui,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.6;
+  }
+  a{color:var(--primary-dark);}
+  .container{max-width:760px; margin:0 auto; padding:0 24px 80px;}
+
+  header.nav{
+    position:sticky; top:0; z-index:40; background:rgba(244,245,248,0.85); backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(145,83,255,0.10); margin-bottom:50px;
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:760px; margin:0 auto;}
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+  .brandmark{
+    width:32px;height:32px;border-radius:9px; background:var(--void);
+    display:flex;align-items:center;justify-content:center; flex:0 0 auto;
+  }
+  .brandname{font-weight:800; font-size:15.5px; color:var(--ink);}
+  .brandname .leap{font-weight:500; color:var(--primary);}
+  .back-link{font-size:13.5px; font-weight:700; color:var(--ink-dim); text-decoration:none;}
+
+  h1{font-size:34px; font-weight:800; letter-spacing:-.02em; margin:0 0 12px;}
+  .lede{font-size:16px; color:var(--ink-dim); font-weight:500; max-width:480px; margin:0 0 36px;}
+
+  .contact-card{
+    background:var(--surface); border-radius:24px; padding:36px 32px; box-shadow:var(--shadow);
+    margin-bottom:28px;
+  }
+  .contact-card .label{font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color:var(--primary-dark); margin-bottom:10px;}
+  .email-link{
+    display:inline-flex; align-items:center; gap:10px; font-size:22px; font-weight:800; color:var(--ink);
+    text-decoration:none; padding:14px 20px; background:var(--surface-alt); border-radius:14px;
+  }
+  .email-link:hover{background:#E1D8FF;}
+
+  .note-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px;}
+  .note-box{background:var(--surface); border-radius:16px; padding:18px 20px; box-shadow:var(--shadow-sm);}
+  .note-box h3{font-size:13.5px; font-weight:800; margin:0 0 6px;}
+  .note-box p{font-size:13.5px; color:var(--ink-dim); font-weight:500; margin:0;}
+
+  .fine-print{font-size:13px; color:var(--ink-faint); font-weight:500; margin-top:32px;}
+
+  footer{padding:44px 0 60px; text-align:center;}
+  .footer-fine{font-size:12.5px; color:var(--ink-faint); font-weight:500;}
+
+  @media (max-width:560px){
+    .note-grid{grid-template-columns:1fr;}
+    .email-link{font-size:17px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <div class="brandmark"><svg viewBox="0 0 32 32" width="20" height="20"><path d="M 24.8,14.13 A 9,9 0 1 1 18.33,7.31" fill="none" stroke="#9153FF" stroke-width="2.2" stroke-linecap="round"/><circle cx="22.42" cy="6.83" r="1.9" fill="#D1B9FF"/></svg></div>
+      <div class="brandname">Origin<span class="leap">Leap</span></div>
+    </a>
+    <a href="index.html" class="back-link">← Back to OriginLeap</a>
+  </div>
+</header>
+
+<div class="container">
+  <h1>Get in touch</h1>
+  <p class="lede">Questions about the app, feedback on the six habits, press inquiries — whatever it is, this goes straight to a person, not a mailing list.</p>
+
+  <div class="contact-card">
+    <div class="label">Email</div>
+    <a href="mailto:hello@originleap.com" class="email-link">
+      hello@originleap.com
+    </a>
+  </div>
+
+  <div class="note-grid">
+    <div class="note-box">
+      <h3>Response time</h3>
+      <p>We read everything — replies might just take a few days.</p>
+    </div>
+    <div class="note-box">
+      <h3>Privacy questions</h3>
+      <p>See our <a href="privacy.html">privacy policy</a>, or email privacy@originleap.com directly.</p>
+    </div>
+  </div>
+
+  <p class="fine-print">There's no contact form here on purpose — no inbox to maintain beyond an actual email address, and nothing about your message goes anywhere except that inbox.</p>
+</div>
+
+<footer>
+  <div class="footer-fine">© 2026 OriginLeap. originleap.com</div>
+</footer>
+
+</body>
+</html>

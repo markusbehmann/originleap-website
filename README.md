@@ -5,6 +5,7 @@ Static marketing site for OriginLeap — a 75-day tracker for six science-backed
 ## Contents
 
 - `index.html` — landing page
+- `contact.html` — contact page
 - `privacy.html` — privacy policy
 
 ## Deployment
