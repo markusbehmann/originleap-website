@@ -5,9 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terms of Service — OriginLeap</title>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&display=swap" rel="stylesheet">
 <style>
+  @font-face{
+    font-family:'Manrope';
+    font-style:normal;
+    font-weight:400 800;
+    font-display:swap;
+    src:url('/fonts/manrope-latin-variable.woff2') format('woff2');
+  }
   :root{
     --bg:#F4F5F8; --surface:#FFFFFF; --surface-alt:#EBE7FF;
     --primary:#9153FF; --primary-dark:#5815B7;
@@ -15,7 +20,7 @@
     --ink:#0C0D12; --ink-dim:#535461; --ink-faint:#8D8E98;
     --void:#0C0D12;
     --card-border:transparent;
-    --nav-bg:rgba(244,245,248,0.85); --nav-border:rgba(145,83,255,0.10);
+    --nav-bg:rgba(238,240,250,0.85); --nav-border:rgba(108,93,224,0.10);
     --shadow-sm: 0 8px 24px rgba(88,21,183,0.10);
   }
   :root[data-theme="dark"]{
@@ -34,13 +39,14 @@
     transition:background .2s ease, color .2s ease;
   }
   a{color:var(--accent-text);}
-  .container{max-width:760px; margin:0 auto; padding:0 24px 80px;}
+  .container{max-width:1280px; margin:0 auto; padding:0 24px 80px;}
+  .prose{max-width:760px; margin:0 auto;}
 
   header.nav{
     position:sticky; top:0; z-index:40; background:var(--nav-bg); backdrop-filter:blur(10px);
     border-bottom:1px solid var(--nav-border); margin-bottom:50px;
   }
-  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:760px; margin:0 auto;}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1280px; margin:0 auto;}
   .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
   .brandmark{
     width:32px;height:32px;border-radius:9px; background:var(--void);
@@ -48,15 +54,25 @@
   }
   .brandname{font-weight:800; font-size:15.5px; color:var(--ink);}
   .brandname .leap{font-weight:500; color:var(--primary);}
-  .nav-right{display:flex; align-items:center; gap:16px;}
-  .back-link{font-size:13.5px; font-weight:700; color:var(--ink-dim); text-decoration:none;}
+  .nav-links{display:flex; align-items:center; gap:26px;}
+  .nav-links a{font-size:14px; font-weight:600; color:var(--ink-dim); text-decoration:none;}
+  .nav-links a.btn{color:#fff;}
+  .nav-links a:hover{color:var(--accent-text);}
+  @media (max-width:640px){ .nav-links a.hide-mobile{display:none;} }
 
   .theme-toggle{
-    width:34px; height:34px; border-radius:50%; border:1px solid var(--nav-border); background:transparent;
-    color:var(--ink-dim); font-size:14px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    width:36px; height:36px; border-radius:50%; border:1px solid var(--nav-border); background:transparent;
+    color:var(--ink-dim); font-size:15px; cursor:pointer; display:flex; align-items:center; justify-content:center;
     line-height:1; padding:0;
   }
   .theme-toggle:hover{border-color:var(--primary); color:var(--accent-text);}
+
+  .btn{
+    font-family:'Manrope',sans-serif; font-weight:700; font-size:14.5px; border:none; border-radius:999px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; padding:13px 22px;
+    cursor:pointer; box-shadow:0 10px 24px rgba(108,93,224,0.35); text-decoration:none; display:inline-block;
+  }
+  .btn.small{padding:10px 18px; font-size:13px;}
 
   h1{font-size:32px; font-weight:800; letter-spacing:-.02em; margin:0 0 6px;}
   .eff-date{font-size:13px; color:var(--ink-faint); font-weight:600; margin-bottom:32px;}
@@ -73,9 +89,10 @@
   li{margin-bottom:6px;}
   strong{color:var(--ink); font-weight:700;}
 
-  footer{padding:44px 0 60px; text-align:center;}
-  .footer-links{display:flex; justify-content:center; gap:20px; margin-bottom:14px;}
-  .footer-links a{font-size:13px; font-weight:600; color:var(--ink-dim); text-decoration:none;}
+  footer{padding:44px 0 60px;}
+  .footer-inner{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;}
+  .footer-links{display:flex; gap:24px; flex-wrap:wrap;}
+  .footer-links a{font-size:13.5px; font-weight:600; color:var(--ink-dim); text-decoration:none;}
   .footer-links a:hover{color:var(--accent-text);}
   .footer-fine{font-size:12.5px; color:var(--ink-faint); font-weight:500;}
 </style>
@@ -97,24 +114,28 @@
       <div class="brandmark"><svg viewBox="0 0 32 32" width="20" height="20"><path d="M 24.8,14.13 A 9,9 0 1 1 18.33,7.31" fill="none" stroke="#9153FF" stroke-width="2.2" stroke-linecap="round"/><circle cx="22.42" cy="6.83" r="1.9" fill="#D1B9FF"/></svg></div>
       <div class="brandname">Origin<span class="leap">Leap</span></div>
     </a>
-    <div class="nav-right">
+    <nav class="nav-links">
+      <a href="index.html#science" class="hide-mobile">Science</a>
+      <a href="index.html#how" class="hide-mobile">How it works</a>
+      <a href="contact.html" class="hide-mobile">Contact</a>
       <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
-      <a href="index.html" class="back-link">← Back to OriginLeap</a>
-    </div>
+      <a href="https://apps.apple.com/app/originleap/id6802236441" class="btn small" target="_blank" rel="noopener">Get the app</a>
+    </nav>
   </div>
 </header>
 
 <div class="container">
+  <div class="prose">
   <h1>Terms of Service</h1>
-  <div class="eff-date">Effective date: August 20, 2026</div>
+  <div class="eff-date">Effective date: September 1, 2026</div>
 
   <div class="summary-box">
     <span>The short version</span>
-    OriginLeap is a 75-day habit tracker for iOS. There's no account and no server — your data stays on your device. Plus is an optional subscription billed through the App Store. And to be clear: nothing in this app is medical advice — talk to an actual doctor before changing your exercise, sleep, or diet routine.
+    OriginLeap is made by aLIVE-Service GmbH, a German company. There's no account and no server — your data stays on your device. Plus is an optional subscription billed through the App Store. And to be clear: nothing in this app is medical advice — talk to an actual doctor before changing your exercise, sleep, or diet routine.
   </div>
 
   <h2>1. Acceptance of These Terms</h2>
-  <p>By downloading, installing, or using OriginLeap (the "App"), you agree to these Terms of Service. If you don't agree, don't use the App. These Terms are between you and OriginLeap ("we," "us"); using the App through Apple's App Store also means Apple's <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Licensed Application End User License Agreement</a> applies alongside them.</p>
+  <p>By downloading, installing, or using OriginLeap (the "App"), you agree to these Terms of Service. If you don't agree, don't use the App. These Terms are between you and <strong>aLIVE-Service GmbH</strong> ("we," "us," "aLIVE-Service") — see our <a href="impressum.html">Impressum</a> for full company details. Using the App through Apple's App Store also means Apple's <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Licensed Application End User License Agreement</a> applies alongside them.</p>
 
   <h2>2. What OriginLeap Is</h2>
   <p>OriginLeap is a 75-day tracker built around seven daily habits — workout, steps, water, sleep, language practice, alcohol, and diet. It runs entirely on your device: there's no account to create and no server storing your data. See our <a href="privacy.html">Privacy Policy</a> for the details.</p>
@@ -130,47 +151,58 @@
 
   <h2>6. Subscriptions (OriginLeap Plus)</h2>
   <ul>
-    <li>Some features require <strong>OriginLeap Plus</strong>, a subscription billed and managed entirely through the App Store.</li>
+    <li>Some features require <strong>OriginLeap Plus</strong>, a subscription sold, billed, and managed entirely through the App Store. Apple, not aLIVE-Service, processes your payment; for VAT and billing purposes within the EU, Apple acts as the seller of record for App Store purchases.</li>
     <li>Subscriptions auto-renew at the price shown at purchase unless canceled at least 24 hours before the current period ends. Manage or cancel anytime in your device's <strong>Settings → [Your Name] → Subscriptions</strong>.</li>
     <li>Payment is charged to your Apple ID account at confirmation of purchase and again at renewal.</li>
     <li>Refunds are handled by Apple under the App Store's own refund policies — we don't process payments or refunds directly and can't issue them ourselves.</li>
     <li><strong>Referral credit:</strong> sharing or redeeming an invite code may grant both accounts a free period of Plus. Referral credit has no cash value, is non-transferable, may be limited to one redemption per account, and can be modified or discontinued at any time.</li>
   </ul>
 
-  <h2>7. Apple Health</h2>
+  <h2>7. Your Right of Withdrawal</h2>
+  <p>If you're a consumer in the EU/EEA or UK, you generally have a 14-day right to withdraw from a contract for digital content or services without giving a reason, under Art. 246a § 1 EGBGB and § 355 BGB. Because the Plus subscription is sold through the App Store, Apple's own purchase flow is where this right is exercised and where any required withdrawal notice is presented at the point of sale — see Apple's terms and your device's purchase confirmation for the specifics that apply to your purchase. This right doesn't apply once you've expressly agreed to immediate performance and acknowledged that you lose the right of withdrawal once the service has started (§ 356(5) BGB), which is a common condition for instant digital access.</p>
+
+  <h2>8. Apple Health</h2>
   <p>If you connect Apple Health, OriginLeap reads step count, workout duration, and sleep data to pre-fill your daily log. This access is read-only — the App never writes to your Health data — and you can revoke it anytime in <strong>Settings → Health</strong>. See the Privacy Policy for more.</p>
 
-  <h2>8. Acceptable Use</h2>
+  <h2>9. Acceptable Use</h2>
   <p>Don't reverse-engineer, decompile, or tamper with the App; don't use it in a way that violates any law; don't attempt to interfere with how it functions on your or anyone else's device.</p>
 
-  <h2>9. Intellectual Property</h2>
-  <p>The App, its design, logo, and content (other than data you enter yourself) belong to OriginLeap. Using the App doesn't give you any ownership rights in it beyond the limited license to use it on your own devices per Apple's standard license terms.</p>
+  <h2>10. Intellectual Property</h2>
+  <p>The App, its design, logo, and content (other than data you enter yourself) belong to aLIVE-Service GmbH. Using the App doesn't give you any ownership rights in it beyond the limited license to use it on your own devices per Apple's standard license terms.</p>
 
-  <h2>10. Disclaimer of Warranties</h2>
-  <p>The App is provided "as is," without warranties of any kind, express or implied — including that it will be uninterrupted, error-free, or that any habit target or citation is complete or current. Research gets updated; we do our best to keep targets accurate but can't guarantee it.</p>
+  <h2>11. Disclaimer of Warranties</h2>
+  <p>The App is provided "as is," without warranties of any kind, express or implied — including that it will be uninterrupted, error-free, or that any habit target or citation is complete or current. Research gets updated; we do our best to keep targets accurate but can't guarantee it. Nothing in this section limits any statutory warranty rights you have as a consumer that cannot be excluded by agreement.</p>
 
-  <h2>11. Limitation of Liability</h2>
-  <p>To the fullest extent permitted by law, OriginLeap isn't liable for indirect, incidental, or consequential damages arising from your use of the App, including any health outcome from following a habit target. Nothing here limits liability where the law doesn't allow it to be limited.</p>
+  <h2>12. Limitation of Liability</h2>
+  <p>To the fullest extent permitted by law, aLIVE-Service isn't liable for indirect, incidental, or consequential damages arising from your use of the App, including any health outcome from following a habit target. Nothing here limits liability for intent, gross negligence, or injury to life, body, or health, or any other liability that cannot be limited under German law.</p>
 
-  <h2>12. Termination</h2>
+  <h2>13. Termination</h2>
   <p>You can stop using the App anytime by deleting it, which also deletes all locally stored data. We may discontinue or modify the App at any time; if that affects an active Plus subscription, App Store billing terms still apply to any period already paid for.</p>
 
-  <h2>13. Changes to These Terms</h2>
+  <h2>14. Changes to These Terms</h2>
   <p>We may update these Terms as the App changes. Material changes will be reflected here with a new effective date.</p>
 
-  <h2>14. Governing Law</h2>
-  <p>These Terms are governed by the laws of the United Arab Emirates as applied in the Emirate of Dubai, without regard to conflict-of-law principles. If you're a consumer, this choice of law doesn't override any mandatory consumer-protection rights you have under the laws of your country of residence.</p>
+  <h2>15. Governing Law</h2>
+  <p>These Terms are governed by German law, excluding the UN Convention on Contracts for the International Sale of Goods (CISG). If you're a consumer, this choice of law doesn't override any mandatory consumer-protection rights you have under the laws of your country of residence.</p>
 
-  <h2>15. Contact</h2>
-  <p>Questions about these Terms can be sent to <a href="mailto:hello@originleap.com">hello@originleap.com</a>.</p>
+  <h2>16. Contact</h2>
+  <p>Questions about these Terms can be sent to <a href="mailto:hello@originleap.com">hello@originleap.com</a>, or by post to aLIVE-Service GmbH, Gustav-Ricker-Str. 62, 39120 Magdeburg, Germany.</p>
+  </div>
 </div>
 
 <footer>
-  <div class="footer-links">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="contact.html">Contact</a>
+  <div class="container footer-inner">
+    <a href="index.html" class="brand">
+      <div class="brandmark"><svg viewBox="0 0 32 32" width="20" height="20"><path d="M 24.8,14.13 A 9,9 0 1 1 18.33,7.31" fill="none" stroke="#9153FF" stroke-width="2.2" stroke-linecap="round"/><circle cx="22.42" cy="6.83" r="1.9" fill="#D1B9FF"/></svg></div>
+      <div class="brandname">Origin<span class="leap">Leap</span></div>
+    </a>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-fine">© 2026 aLIVE-Service GmbH. originleap.com</div>
   </div>
-  <div class="footer-fine">© 2026 OriginLeap. originleap.com</div>
 </footer>
 
 <script>
