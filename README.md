@@ -18,14 +18,17 @@ Static marketing site for OriginLeap — a 75-day tracker for seven science-back
 - `functions/invite/[code].js` — Cloudflare Pages Function that serves `invite/index.html` for any `/invite/{code}` path, keeping the code in the URL (a `_redirects` rewrite rule was tried first but Cloudflare wasn't applying it on this project — see git history — so this route is Functions-only; nothing else on the site needs a build step)
 - `images/og-image.jpg` — 1200×630 social share image (Open Graph / Twitter Card), generated locally with Python/Pillow
 - `sitemap.xml`, `robots.txt` — basic technical SEO; `invite/` is disallowed and excluded since it's a personalized, `noindex` landing page
+- `blog/index.html`, `blog/why-7000-steps-not-10000.html` — first blog post/section, built around a claim already used on the homepage (7,000 vs. 10,000 steps); linked from the main nav and every page's footer
 
 Supports light and dark mode (toggle in the nav, persisted via `localStorage`, defaults to system preference).
 
 ## SEO / marketing
 
 - Every page has Open Graph and Twitter Card meta tags (title/description/image), pointing at `images/og-image.jpg`. `privacy.html` and `terms.html` previously had no `<meta name="description">` at all — added one for each.
-- `index.html` has `SoftwareApplication` JSON-LD structured data. Only verifiable fields are populated (name, url, description, category, OS, App Store link) — no price or rating, since neither is real/known.
+- `index.html` has `SoftwareApplication` and `FAQPage` JSON-LD structured data. Only verifiable fields are populated (name, url, description, category, OS, App Store link) — no price or rating, since neither is real/known. The FAQ JSON-LD text matches the visible `<details>` accordion in the `#faq` section word-for-word, as Google requires.
 - Every page's footer (except `invite/index.html`, which is single-purpose and `noindex`) carries a compact "How OriginLeap Compares" table against 75 Hard, Streaks, and Habitica, purely for long-tail search traffic on comparison queries. Claims are phrased as general, factual mechanics (reset rules, Health sync, etc.), not disparagement, and the table explicitly disclaims any affiliation with those apps/programs.
+- `index.html` also gained: a "Bring a Friend" section explaining the existing (but previously unmentioned on-site) referral flow; an FAQ accordion (`#faq`) answering objections using only facts already established elsewhere on the site; and a "Be one of our first reviews" section that links straight to the App Store's write-a-review deep link (`?action=write-review`) instead of showing fabricated testimonials — there's no review history yet, so nothing there claims otherwise. That section can be swapped for real testimonials once some exist.
+- **Deliberately not done:** an "explain OriginLeap Plus" section. Nothing in the repo states what Plus actually unlocks or costs, and the user chose not to supply those facts — so the site still doesn't explain Plus anywhere beyond "an optional subscription." Don't invent features/pricing for it; ask for the real details first.
 
 ## Referral links
 

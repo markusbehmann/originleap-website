@@ -235,6 +235,42 @@
   .compare-table tr:last-child td{border-bottom:none;}
   .compare-note{font-size:11px; color:var(--ink-faint); margin:12px 0 0;}
   .footer-divider{border:none; border-top:1px solid var(--nav-border); margin:0 0 32px;}
+
+  /* ---- referral ---- */
+  .referral-card{
+    background:var(--surface); border:1px solid var(--card-border); border-radius:26px; padding:40px;
+    box-shadow:var(--shadow-sm); display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:center;
+  }
+  @media (max-width:820px){ .referral-card{grid-template-columns:1fr;} }
+  .referral-steps{display:flex; flex-direction:column; gap:16px;}
+  .referral-step{display:flex; gap:14px; align-items:flex-start;}
+  .referral-step .num{
+    width:28px;height:28px;border-radius:9px; background:var(--surface-alt); color:var(--accent-text);
+    display:flex;align-items:center;justify-content:center; font-weight:800; font-size:12.5px; flex:0 0 auto;
+  }
+  .referral-step p{font-size:14px; color:var(--ink-dim); font-weight:600; margin:0; line-height:1.5; padding-top:3px;}
+  .referral-step strong{color:var(--ink);}
+
+  /* ---- faq ---- */
+  .faq-list{display:flex; flex-direction:column; gap:12px; margin-top:44px;}
+  .faq-item{background:var(--surface); border:1px solid var(--card-border); border-radius:16px; box-shadow:var(--shadow-sm); overflow:hidden;}
+  .faq-item summary{
+    list-style:none; cursor:pointer; padding:20px 24px; font-weight:700; font-size:15px; color:var(--ink);
+    display:flex; justify-content:space-between; align-items:center; gap:16px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+'; font-size:22px; font-weight:400; color:var(--accent-text); flex:0 0 auto; line-height:1;}
+  .faq-item[open] summary::after{content:'−';}
+  .faq-item p{font-size:14px; color:var(--ink-dim); font-weight:500; line-height:1.6; margin:0; padding:0 24px 22px;}
+
+  /* ---- early reviews ---- */
+  .reviews-card{
+    background:var(--surface); border:1px solid var(--card-border); border-radius:26px; padding:48px; box-shadow:var(--shadow-sm);
+    text-align:center; max-width:640px; margin:0 auto;
+  }
+  .reviews-card .eyebrow{justify-content:center;}
+  .reviews-card h2{font-size:26px; margin-bottom:14px;}
+  .reviews-card .lede{max-width:480px; margin:0 auto 26px;}
 </style>
 <script>
 (function(){
@@ -257,6 +293,62 @@
   "sameAs": "https://apps.apple.com/app/originleap/id6802236441"
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What happens if I miss a day?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depends how much you miss. Hit at least one of your seven habits and your streak survives — that's the whole design. The only day that resets you is one where you hit zero of seven."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need an Apple Watch or fitness tracker?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. OriginLeap reads whatever's already in Apple Health — from your iPhone, a watch, or any other app that writes to Health — so steps, workouts, sleep, and water can fill in automatically. If you don't have a wearable, you can always log things by hand instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I'm sick or injured?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mark the day as a recovery day and it's excluded from the reset rule entirely. That's the one rule 75 Hard doesn't have, and it's usually the difference between quitting in week two and actually finishing day 75."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there an account, and where does my data go?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No account, no login, no server. OriginLeap stores your habit data, photos, and Health data on your device — we never see it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which diet does OriginLeap use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Whichever one you pick. Intermittent fasting, low-carb, keto, Mediterranean, or something you wrote yourself — OriginLeap tracks whether you stuck to your own plan, not which plan you chose."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there an Android version?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not currently — OriginLeap is available for iPhone on the Apple App Store."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -269,7 +361,8 @@
     <nav class="nav-links">
       <a href="#science" class="hide-mobile">Science</a>
       <a href="#how" class="hide-mobile">How it works</a>
-      <a href="privacy.html" class="hide-mobile">Privacy</a>
+      <a href="#faq" class="hide-mobile">FAQ</a>
+      <a href="blog/index.html" class="hide-mobile">Blog</a>
       <a href="contact.html" class="hide-mobile">Contact</a>
       <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
       <a href="https://apps.apple.com/app/originleap/id6802236441" class="btn small" target="_blank" rel="noopener">Get the app</a>
@@ -479,6 +572,78 @@
 
 <section>
   <div class="container">
+    <div class="referral-card">
+      <div>
+        <div class="eyebrow">Bring a friend</div>
+        <h2>Struggling alone is optional</h2>
+        <p class="lede" style="margin-top:12px;">Invite a friend straight from the app and you'll both get a free week of Plus — no code to buy, just one to share.</p>
+      </div>
+      <div class="referral-steps">
+        <div class="referral-step">
+          <div class="num">1</div>
+          <p>Open <strong>Profile → Invite a Friend</strong> in the app.</p>
+        </div>
+        <div class="referral-step">
+          <div class="num">2</div>
+          <p>Send them your link — text it, drop it in a group chat, whatever's easiest.</p>
+        </div>
+        <div class="referral-step">
+          <div class="num">3</div>
+          <p>They install OriginLeap and enter your code — <strong>you both get a free week of Plus.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Questions</div>
+      <h2>Before you ask</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What happens if I miss a day?</summary>
+        <p>Depends how much you miss. Hit at least one of your seven habits and your streak survives — that's the whole design. The only day that resets you is one where you hit zero of seven.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need an Apple Watch or fitness tracker?</summary>
+        <p>No. OriginLeap reads whatever's already in Apple Health — from your iPhone, a watch, or any other app that writes to Health — so steps, workouts, sleep, and water can fill in automatically. If you don't have a wearable, you can always log things by hand instead.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What if I'm sick or injured?</summary>
+        <p>Mark the day as a recovery day and it's excluded from the reset rule entirely. That's the one rule 75 Hard doesn't have, and it's usually the difference between quitting in week two and actually finishing day 75.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there an account, and where does my data go?</summary>
+        <p>No account, no login, no server. OriginLeap stores your habit data, photos, and Health data on your device — we never see it. Full details are in our <a href="privacy.html">Privacy Policy</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which diet does OriginLeap use?</summary>
+        <p>Whichever one you pick. Intermittent fasting, low-carb, keto, Mediterranean, or something you wrote yourself — OriginLeap tracks whether you stuck to your own plan, not which plan you chose. The largest head-to-head diet trial to date found almost no difference in outcomes between low-fat and low-carb; consistency was what predicted success.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is there an Android version?</summary>
+        <p>Not currently — OriginLeap is available for iPhone on the Apple App Store.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="reviews-card">
+      <div class="eyebrow">Fresh off the App Store</div>
+      <h2>Be one of our first reviews</h2>
+      <p class="lede">OriginLeap just launched, so there's no ratings history yet — which means an early review from you carries more weight than it ever will again.</p>
+      <a href="https://apps.apple.com/app/id6802236441?action=write-review" class="btn" target="_blank" rel="noopener">Leave a review on the App Store</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
     <div class="final-cta">
       <h2>Your future self is watching. Try not to embarrass them.</h2>
       <p class="lede">Seven science-backed habits, 75 days, and a streak that survives your bad days. Available now on the App Store.</p>
@@ -551,6 +716,7 @@
       <div class="brandname">Origin<span class="leap">Leap</span></div>
     </a>
     <div class="footer-links">
+      <a href="blog/index.html">Blog</a>
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms of Service</a>
       <a href="impressum.html">Impressum</a>
