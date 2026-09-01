@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found — OriginLeap</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+  @font-face{
+    font-family:'Manrope';
+    font-style:normal;
+    font-weight:400 800;
+    font-display:swap;
+    src:url('/fonts/manrope-latin-variable.woff2') format('woff2');
+  }
+  :root{
+    --bg:#F4F5F8; --surface:#FFFFFF; --surface-alt:#EBE7FF;
+    --primary:#9153FF; --primary-dark:#5815B7;
+    --accent-text:#5815B7;
+    --ink:#0C0D12; --ink-dim:#535461; --ink-faint:#8D8E98;
+    --void:#0C0D12;
+    --card-border:transparent;
+    --nav-bg:rgba(238,240,250,0.85); --nav-border:rgba(108,93,224,0.10);
+    --shadow: 0 20px 50px rgba(88,21,183,0.16);
+  }
+  :root[data-theme="dark"]{
+    --bg:#0C0D12; --surface:#17181F; --surface-alt:rgba(145,83,255,0.16);
+    --primary:#9153FF; --primary-dark:#5815B7;
+    --accent-text:#D1B9FF;
+    --ink:#F4F5F8; --ink-dim:#A6A3B8; --ink-faint:#6E6B80;
+    --card-border:rgba(255,255,255,0.07);
+    --nav-bg:rgba(12,13,18,0.80); --nav-border:rgba(145,83,255,0.16);
+    --shadow: 0 20px 50px rgba(0,0,0,0.45);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Manrope',system-ui,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.6;
+    min-height:100vh; display:flex; flex-direction:column;
+  }
+  a{color:var(--accent-text);}
+  .container{max-width:1280px; margin:0 auto; padding:0 24px;}
+
+  header.nav{
+    background:var(--nav-bg); backdrop-filter:blur(10px); border-bottom:1px solid var(--nav-border);
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1280px; margin:0 auto;}
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
+  .brandmark{
+    width:32px;height:32px;border-radius:9px; background:var(--void);
+    display:flex;align-items:center;justify-content:center; flex:0 0 auto;
+  }
+  .brandname{font-weight:800; font-size:15.5px; color:var(--ink);}
+  .brandname .leap{font-weight:500; color:var(--primary);}
+  .theme-toggle{
+    width:36px; height:36px; border-radius:50%; border:1px solid var(--nav-border); background:transparent;
+    color:var(--ink-dim); font-size:15px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    line-height:1; padding:0;
+  }
+  .theme-toggle:hover{border-color:var(--primary); color:var(--accent-text);}
+
+  main{flex:1; display:flex; align-items:center; justify-content:center; padding:60px 24px;}
+  .error-card{
+    background:var(--surface); border:1px solid var(--card-border); border-radius:26px; padding:52px 44px;
+    box-shadow:var(--shadow); text-align:center; max-width:460px;
+  }
+  .error-code{font-size:13px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-text); margin-bottom:16px;}
+  h1{font-size:26px; font-weight:800; letter-spacing:-.02em; margin:0 0 14px;}
+  .error-card p{font-size:15px; color:var(--ink-dim); font-weight:500; margin:0 0 28px;}
+  .btn{
+    font-family:'Manrope',sans-serif; font-weight:700; font-size:14.5px; border:none; border-radius:999px;
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; padding:13px 26px;
+    cursor:pointer; box-shadow:0 10px 24px rgba(108,93,224,0.35); text-decoration:none; display:inline-block;
+  }
+  .btn.outline{background:transparent; color:var(--accent-text); border:1.5px solid rgba(145,83,255,0.35); box-shadow:none; margin-left:10px;}
+  @media (max-width:480px){ .btn.outline{display:block; margin:12px 0 0;} }
+
+  footer{padding:0 0 40px; text-align:center;}
+  .footer-fine{font-size:12.5px; color:var(--ink-faint); font-weight:500;}
+</style>
+<script>
+(function(){
+  try{
+    var stored = localStorage.getItem('theme');
+    var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  }catch(e){}
+})();
+</script>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <div class="brandmark"><svg viewBox="0 0 32 32" width="20" height="20"><path d="M 24.8,14.13 A 9,9 0 1 1 18.33,7.31" fill="none" stroke="#9153FF" stroke-width="2.2" stroke-linecap="round"/><circle cx="22.42" cy="6.83" r="1.9" fill="#D1B9FF"/></svg></div>
+      <div class="brandname">Origin<span class="leap">Leap</span></div>
+    </a>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+  </div>
+</header>
+
+<main>
+  <div class="error-card">
+    <div class="error-code">404</div>
+    <h1>That page took a rest day.</h1>
+    <p>Whatever you were looking for isn't here — the link might be old, or just mistyped.</p>
+    <a href="index.html" class="btn">Back to OriginLeap</a>
+    <a href="contact.html" class="btn outline">Contact us</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-fine">© 2026 OriginLeap. <a href="index.html">originleap.com</a></div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.getElementById('themeToggle');
+  function apply(theme){
+    document.documentElement.setAttribute('data-theme', theme);
+    btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+  }
+  btn.addEventListener('click', function(){
+    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    try{ localStorage.setItem('theme', next); }catch(e){}
+    apply(next);
+  });
+  apply(document.documentElement.getAttribute('data-theme'));
+})();
+</script>
+
+</body>
+</html>

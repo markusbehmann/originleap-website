@@ -19,6 +19,8 @@ Static marketing site for OriginLeap — a 75-day tracker for seven science-back
 - `images/og-image.jpg` — 1200×630 social share image (Open Graph / Twitter Card), generated locally with Python/Pillow
 - `sitemap.xml`, `robots.txt` — basic technical SEO; `invite/` is disallowed and excluded since it's a personalized, `noindex` landing page
 - `blog/index.html`, `blog/why-7000-steps-not-10000.html` — first blog post/section, built around a claim already used on the homepage (7,000 vs. 10,000 steps); linked from the main nav and every page's footer
+- `favicon.ico`, `apple-touch-icon.png` — raster fallbacks alongside `favicon.svg`, generated locally with Python/Pillow from the exact geometry in `favicon.svg` (same ring+dot mark, not a redesign). Needed because iOS home-screen bookmarks and some older browsers don't honor SVG favicons.
+- `404.html` — Cloudflare Pages serves this automatically for any unmatched path, styled to match the rest of the site instead of a blank default error page
 
 Supports light and dark mode (toggle in the nav, persisted via `localStorage`, defaults to system preference).
 
