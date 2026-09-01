@@ -16,8 +16,16 @@ Static marketing site for OriginLeap — a 75-day tracker for seven science-back
 - `.well-known/apple-app-site-association` — enables Universal Links for `/invite/*` into the iOS app
 - `_headers` — forces `Content-Type: application/json` on the AASA file (Cloudflare Pages would otherwise serve it as `application/octet-stream`, which breaks Universal Links)
 - `functions/invite/[code].js` — Cloudflare Pages Function that serves `invite/index.html` for any `/invite/{code}` path, keeping the code in the URL (a `_redirects` rewrite rule was tried first but Cloudflare wasn't applying it on this project — see git history — so this route is Functions-only; nothing else on the site needs a build step)
+- `images/og-image.jpg` — 1200×630 social share image (Open Graph / Twitter Card), generated locally with Python/Pillow
+- `sitemap.xml`, `robots.txt` — basic technical SEO; `invite/` is disallowed and excluded since it's a personalized, `noindex` landing page
 
 Supports light and dark mode (toggle in the nav, persisted via `localStorage`, defaults to system preference).
+
+## SEO / marketing
+
+- Every page has Open Graph and Twitter Card meta tags (title/description/image), pointing at `images/og-image.jpg`. `privacy.html` and `terms.html` previously had no `<meta name="description">` at all — added one for each.
+- `index.html` has `SoftwareApplication` JSON-LD structured data. Only verifiable fields are populated (name, url, description, category, OS, App Store link) — no price or rating, since neither is real/known.
+- Every page's footer (except `invite/index.html`, which is single-purpose and `noindex`) carries a compact "How OriginLeap Compares" table against 75 Hard, Streaks, and Habitica, purely for long-tail search traffic on comparison queries. Claims are phrased as general, factual mechanics (reset rules, Health sync, etc.), not disparagement, and the table explicitly disclaims any affiliation with those apps/programs.
 
 ## Referral links
 
