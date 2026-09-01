@@ -7,8 +7,8 @@ Static marketing site for OriginLeap — a 75-day tracker for seven science-back
 - `index.html` — landing page
 - `contact.html` — contact page
 - `privacy.html` — privacy policy
-- `terms.html` — terms of service (German law, aLIVE-Service GmbH as seller)
-- `impressum.html` — German legal notice (§ 5 DDG), required because the operating company (aLIVE-Service GmbH) is German
+- `terms.html` — terms of service (UAE/Dubai law; OriginLeap/Markus Behmann is the contracting party, aLIVE-Service GmbH is named only as the App Store distributor)
+- `impressum.html` — legal notice: Markus Behmann as provider (Dubai, UAE), plus aLIVE-Service GmbH's real German company details in its own distributor-only role (required under § 5 DDG for that role specifically)
 - `favicon.svg` — site icon (app logo mark)
 - `fonts/manrope-latin-variable.woff2` — self-hosted Manrope (variable font, covers weights 400–800). Loading fonts from Google's own servers has been the subject of real GDPR cease-and-desist letters in Germany (IP addresses transmitted to Google without consent); self-hosting removes the issue entirely.
 - `images/` — app screenshots (light/dark pairs) used in the landing page
@@ -27,22 +27,38 @@ copy button and an App Store link (https://apps.apple.com/app/originleap/id68022
 
 ## Legal / compliance notes
 
-The site is operated by **aLIVE-Service GmbH** (Magdeburg, Germany) — company details are
-in `impressum.html`, sourced from the real imprint at alive-service.de/impressum. Privacy
-Policy and Terms were updated accordingly (German governing law, GDPR-style rights/legal-basis
-sections, EU consumer withdrawal-rights language).
+**OriginLeap (the product/brand) is operated by Markus Behmann**, based in Dubai, UAE — this is
+the contracting party in `terms.html` and the controller named in `privacy.html`. **aLIVE-Service
+GmbH** (Magdeburg, Germany; real company details sourced from alive-service.de/impressum) is
+named separately and only in its actual role: distributing the app on the Apple App Store. It is
+explicitly not a party to the Terms and not the data controller. Governing law for the Terms is
+UAE/Dubai. `impressum.html` reflects both: Markus Behmann as provider (address: Dubai World Trade
+Centre, Sheikh Zayed Road, Dubai, UAE), and aLIVE-Service GmbH's real HRB/VAT details scoped to
+its distributor role, including a "Prokura: Markus Behmann" line — worth confirming that's an
+actual filed Prokura at Amtsgericht Stendal, since Prokura only has legal effect once registered.
 
-Two things worth a lawyer's eyes rather than treating as settled:
-- **§ 356a BGB "Withdrawal button"** — a new German requirement (in force since June 19, 2026)
+Things worth a lawyer's eyes rather than treating as settled:
+- **GDPR extraterritorial scope (Art. 3(2)) and EU representative (Art. 27).** Moving the
+  controller outside the EU doesn't stop GDPR from applying to EU users' data — the app clearly
+  targets/serves EU users, and Apple Health data is special-category data under Art. 9, which
+  likely rules out the Art. 27(2)(a) "occasional, low-risk" exemption from having to designate an
+  EU representative. No representative has been named here (`privacy.html` intentionally doesn't
+  claim one exists). This is a real, unresolved compliance question, not a stylistic one — get it
+  checked before treating the Privacy Policy as complete.
+- **§ 356a BGB "Withdrawal button"** — a German requirement (in force since June 19, 2026)
   mandating an electronic withdrawal button on B2C digital contracts concluded via a website/app.
-  Whether this applies here is genuinely unclear: the Plus subscription is sold through Apple's
-  App Store, not through this website's own checkout, so it's not obvious the obligation falls
-  on aLIVE-Service rather than (or in addition to) Apple. Nothing was built for this since a
-  wrong guess would be worse than an honest gap — flag it to counsel before relying on the
-  Terms' withdrawal section as sufficient.
+  The Plus subscription is sold through Apple's App Store, not this website's own checkout, so
+  the working assumption here is that this obligation (if it applies at all to EU purchasers)
+  falls on Apple, not OriginLeap — `terms.html` reflects that assumption but it hasn't been
+  independently verified.
 - The EU's online dispute resolution (ODR) platform was **shut down in July 2025**, and sites are
   now required to *remove* references to it, not include them. `impressum.html` deliberately
   omits it, even though it's still present on alive-service.de/impressum as of this writing.
+- Multiple jurisdictions were checked before landing on UAE/Dubai (Germany, Malta, and UAE itself
+  all require a real provider address for e-commerce/digital-service disclosures — this isn't a
+  jurisdiction-specific quirk). The Dubai World Trade Centre address is used here because it was
+  supplied as a real, non-residential address; its actual registration status wasn't independently
+  verified.
 
 ## Deployment
 
