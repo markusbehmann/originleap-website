@@ -79,6 +79,36 @@ edit page HTML, but it does block loading of any *external* script, style, image
 connection, and blocks the site from being framed. Tightening beyond that would mean introducing
 a build step this site doesn't otherwise need.
 
+## Blog content pipeline
+
+The blog posts weekly (SEO strategy: rank for both research-based long-tail queries and
+branded competitor-comparison queries). `blog/_drafts/` holds finished-but-unpublished posts —
+each one is fully written, but has `<meta name="robots" content="noindex">`, a `DRAFT —
+UNPUBLISHED` post-date, placeholder `DRAFT-UNPUBLISHED` JSON-LD dates, and isn't linked from
+`blog/index.html` or listed in `sitemap.xml`. The folder is also disallowed in `robots.txt` as a
+second layer of protection against premature indexing. Each draft file has its own publish
+checklist in an HTML comment at the top.
+
+A recurring scheduled task drains this backlog one post per week and publishes automatically
+(no manual review gate) — see the scheduled task itself for the exact cron and prompt. When
+the backlog is empty, the same task researches a new topic via web search and writes a new
+post from scratch, holding itself to the same standard as everything already on this site:
+only cite real, checkable research, and never invent a study, statistic, or app feature that
+isn't independently verifiable.
+
+Current backlog (in `blog/_drafts/`, oldest-to-publish first):
+1. `forty-five-minutes-covers-your-week.html` — the 45-min/week exercise guideline
+2. `water-before-meals-calorie-intake.html` — water timing vs. daily totals
+3. `one-alcohol-free-month-insulin-resistance.html` — the alcohol-free-month study
+4. `originleap-vs-75-hard.html`
+5. `originleap-vs-streaks.html`
+6. `originleap-vs-habitica.html`
+
+The three comparison posts reuse the exact same facts as the footer's "How OriginLeap
+Compares" table (which stays — it's useful as an always-visible summary), just expanded into
+full articles that can actually rank for "OriginLeap vs [App]"-style searches, which a footer
+table on someone else's page view can't do on its own.
+
 ## Referral links
 
 `https://originleap.com/invite/{code}` opens the app directly via Universal Links if it's
