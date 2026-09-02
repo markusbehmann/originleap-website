@@ -18,7 +18,7 @@ Static marketing site for OriginLeap — a 75-day tracker for seven science-back
 - `functions/invite/[code].js` — Cloudflare Pages Function that serves `invite/index.html` for any `/invite/{code}` path, keeping the code in the URL (a `_redirects` rewrite rule was tried first but Cloudflare wasn't applying it on this project — see git history — so this route is Functions-only; nothing else on the site needs a build step)
 - `images/og-image.jpg` — 1200×630 social share image (Open Graph / Twitter Card), generated locally with Python/Pillow
 - `sitemap.xml`, `robots.txt` — basic technical SEO; `invite/` is disallowed and excluded since it's a personalized, `noindex` landing page
-- `blog/index.html`, `blog/why-7000-steps-not-10000.html` — first blog post/section, built around a claim already used on the homepage (7,000 vs. 10,000 steps); linked from the main nav and every page's footer
+- `blog/index.html`, `blog/why-7000-steps-not-10000.html`, `blog/sleep-consistency-vs-hours-slept.html` — blog posts, each built around a claim already used on the homepage (7,000 vs. 10,000 steps; sleep consistency vs. hours slept); linked from the main nav and every page's footer
 - `favicon.ico`, `apple-touch-icon.png` — raster fallbacks alongside `favicon.svg`, generated locally with Python/Pillow from the exact geometry in `favicon.svg` (same ring+dot mark, not a redesign). Needed because iOS home-screen bookmarks and some older browsers don't honor SVG favicons.
 - `404.html` — Cloudflare Pages serves this automatically for any unmatched path, styled to match the rest of the site instead of a blank default error page
 
@@ -31,6 +31,21 @@ Supports light and dark mode (toggle in the nav, persisted via `localStorage`, d
 - Every page's footer (except `invite/index.html`, which is single-purpose and `noindex`) carries a compact "How OriginLeap Compares" table against 75 Hard, Streaks, and Habitica, purely for long-tail search traffic on comparison queries. Claims are phrased as general, factual mechanics (reset rules, Health sync, etc.), not disparagement, and the table explicitly disclaims any affiliation with those apps/programs.
 - `index.html` also gained: a "Bring a Friend" section explaining the existing (but previously unmentioned on-site) referral flow; an FAQ accordion (`#faq`) answering objections using only facts already established elsewhere on the site; and a "Be one of our first reviews" section that links straight to the App Store's write-a-review deep link (`?action=write-review`) instead of showing fabricated testimonials — there's no review history yet, so nothing there claims otherwise. That section can be swapped for real testimonials once some exist.
 - **Deliberately not done:** an "explain OriginLeap Plus" section. Nothing in the repo states what Plus actually unlocks or costs, and the user chose not to supply those facts — so the site still doesn't explain Plus anywhere beyond "an optional subscription." Don't invent features/pricing for it; ask for the real details first.
+- Every page now has a `<link rel="canonical">` matching its own `og:url` exactly (extensionless paths like `/contact`, `/privacy` — kept consistent with the og:url convention already in place, since a mismatch between the two would send conflicting signals to search engines). `invite/index.html` and `404.html` intentionally have neither — both are already `noindex`.
+- `blog/why-7000-steps-not-10000.html` and `blog/sleep-consistency-vs-hours-slept.html` both carry `BlogPosting` JSON-LD (headline, dates, author/publisher as the OriginLeap org, matching the visible byline).
+- Every page preloads the self-hosted Manrope font (`<link rel="preload" ... as="font" crossorigin>`) so text doesn't flash unstyled on first paint.
+
+## Security headers
+
+`_headers` now sets site-wide `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`,
+`Permissions-Policy` (including `interest-cohort=()`, opting out of FLoC/Topics — consistent
+with the "no third-party trackers" claim already made in `privacy.html`), `Strict-Transport-Security`,
+and a `Content-Security-Policy`. The CSP's `style-src`/`script-src` still need `'unsafe-inline'`
+because every page's CSS/JS lives in inline `<style>`/`<script>` blocks with no build step to
+generate nonces or hashes — so it doesn't stop inline-script injection if an attacker can already
+edit page HTML, but it does block loading of any *external* script, style, image, font, or
+connection, and blocks the site from being framed. Tightening beyond that would mean introducing
+a build step this site doesn't otherwise need.
 
 ## Referral links
 
