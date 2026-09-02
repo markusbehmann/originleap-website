@@ -93,9 +93,13 @@
   h1{font-size:34px; font-weight:800; letter-spacing:-.02em; margin:0 0 12px;}
   .lede{font-size:16px; color:var(--ink-dim); font-weight:500; max-width:520px; margin:0 0 40px;}
 
+  .blog-head{max-width:680px; margin-bottom:44px;}
+  .post-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+  @media (max-width:760px){ .post-grid{grid-template-columns:1fr;} }
+
   .post-card{
     display:block; background:var(--surface); border:1px solid var(--card-border); border-radius:22px;
-    padding:28px 30px; box-shadow:var(--shadow-sm); text-decoration:none; margin-bottom:16px;
+    padding:28px 30px; box-shadow:var(--shadow-sm); text-decoration:none;
   }
   .post-card .post-date{font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--accent-text); margin-bottom:10px;}
   .post-card h2{font-size:19px; color:var(--ink); margin:0 0 8px; letter-spacing:-.01em;}
@@ -191,10 +195,12 @@
 </header>
 
 <div class="container">
-  <div class="prose">
+  <div class="blog-head">
   <h1>The OriginLeap Blog</h1>
   <p class="lede">Notes on the research behind the app's seven habits — what the studies actually found, not what a wellness influencer said about them.</p>
+  </div>
 
+  <div class="post-grid">
   <a href="sleep-consistency-vs-hours-slept.html" class="post-card">
     <div class="post-date">September 2, 2026</div>
     <h2>Sleep Consistency Beats Sleep Duration (According To The Actual Research)</h2>
