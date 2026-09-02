@@ -35,6 +35,22 @@ Supports light and dark mode (toggle in the nav, persisted via `localStorage`, d
 - `blog/why-7000-steps-not-10000.html` and `blog/sleep-consistency-vs-hours-slept.html` both carry `BlogPosting` JSON-LD (headline, dates, author/publisher as the OriginLeap org, matching the visible byline).
 - Every page preloads the self-hosted Manrope font (`<link rel="preload" ... as="font" crossorigin>`) so text doesn't flash unstyled on first paint.
 
+## Design polish
+
+Every card/tile across the site (habit cards, science cards, feature cards, FAQ items, blog
+post cards, the contact/note cards, the invite page's cards, etc.) lifts slightly and gets a
+soft purple glow ring on hover, stronger in dark mode than light. `status-card` (the "Perfect /
+Partial / Missed day" cards) gets a glow color-matched to its own accent (green/orange/red)
+instead of purple, since it already carries semantic color. All primary/outline/small/light
+button variants also get a hover lift + deepened shadow. All values are hardcoded per theme
+(`:root[data-theme="dark"] ... :hover{...}` overrides) rather than routed through a shared CSS
+custom property — a first pass tried a `--glow` variable but inserted it inconsistently across
+files, which silently broke the *entire* `box-shadow` (not just the glow layer) wherever the
+variable was referenced but undefined, since an invalid `var()` with no fallback invalidates the
+whole property value. Caught and fixed before shipping; worth remembering if adding more shared
+tokens later — insert the variable and verify it renders in the browser before wiring up
+`var()` references to it.
+
 ## Security headers
 
 `_headers` now sets site-wide `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`,

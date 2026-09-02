@@ -128,6 +128,13 @@
   .compare-table tr:last-child td{border-bottom:none;}
   .compare-note{font-size:11px; color:var(--ink-faint); margin:12px 0 0;}
   .footer-divider{border:none; border-top:1px solid var(--nav-border); margin:0 0 32px;}
+
+  /* ---- hover polish ---- */
+  .btn{ transition: transform .2s ease, box-shadow .2s ease; }
+  .btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 34px rgba(108,93,224,0.5); }
+  .btn.small:hover{ box-shadow: 0 10px 26px rgba(108,93,224,0.5); }
+  .btn.outline:hover{ background: rgba(145,83,255,0.08); border-color: var(--primary); box-shadow: none; }
+  .btn.light:hover{ box-shadow: 0 14px 30px rgba(0,0,0,0.25); }
 </style>
 <script>
 (function(){

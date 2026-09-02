@@ -120,6 +120,27 @@
   .footer-links a{font-size:13px; font-weight:600; color:var(--ink-dim); text-decoration:none;}
   .footer-links a:hover{color:var(--accent-text);}
   .footer-fine{font-size:12.5px; color:var(--ink-faint); font-weight:500;}
+
+  /* ---- hover glow ---- */
+
+  .card{
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .card:hover{
+    transform: translateY(-4px);
+    border-color: rgba(145,83,255,0.4);
+    box-shadow: 0 0 0 1px rgba(145,83,255,0.14), 0 0 34px rgba(145,83,255,0.18), var(--shadow);
+  }
+  :root[data-theme="dark"] .card:hover{
+    box-shadow: 0 0 0 1px rgba(145,83,255,0.3), 0 0 34px rgba(145,83,255,0.4), var(--shadow);
+  }
+
+  /* ---- hover polish ---- */
+  .btn{ transition: transform .2s ease, box-shadow .2s ease; }
+  .btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 34px rgba(108,93,224,0.5); }
+  .btn.small:hover{ box-shadow: 0 10px 26px rgba(108,93,224,0.5); }
+  .btn.outline:hover{ background: rgba(145,83,255,0.08); border-color: var(--primary); box-shadow: none; }
+  .btn.light:hover{ box-shadow: 0 14px 30px rgba(0,0,0,0.25); }
 </style>
 <script>
 (function(){
