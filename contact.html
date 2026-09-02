@@ -154,12 +154,33 @@
     box-shadow: 0 0 0 1px rgba(145,83,255,0.3), 0 0 34px rgba(145,83,255,0.4), var(--shadow-sm);
   }
 
+
+  /* ---- focus-visible (keyboard) ---- */
+  .contact-card:focus-within, .note-box:focus-within{
+    outline: 2px solid rgba(145,83,255,0.5); outline-offset: 3px;
+    transform: translateY(-4px);
+    border-color: rgba(145,83,255,0.4);
+    box-shadow: 0 0 0 1px rgba(145,83,255,0.14), 0 0 34px rgba(145,83,255,0.18), var(--shadow-sm);
+  }
+  :root[data-theme="dark"] .contact-card:focus-within, :root[data-theme="dark"] .note-box:focus-within{
+    box-shadow: 0 0 0 1px rgba(145,83,255,0.3), 0 0 34px rgba(145,83,255,0.4), var(--shadow-sm);
+  }
+  .btn:focus-visible{ outline: 2px solid rgba(145,83,255,0.7); outline-offset: 3px; transform: translateY(-2px); box-shadow: 0 14px 34px rgba(108,93,224,0.5); }
+  .btn.small:focus-visible{ box-shadow: 0 10px 26px rgba(108,93,224,0.5); }
+  .btn.outline:focus-visible{ background: rgba(145,83,255,0.08); border-color: var(--primary); box-shadow: none; }
+  .btn.light:focus-visible{ box-shadow: 0 14px 30px rgba(0,0,0,0.25); }
+
   /* ---- hover polish ---- */
   .btn{ transition: transform .2s ease, box-shadow .2s ease; }
   .btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 34px rgba(108,93,224,0.5); }
   .btn.small:hover{ box-shadow: 0 10px 26px rgba(108,93,224,0.5); }
   .btn.outline:hover{ background: rgba(145,83,255,0.08); border-color: var(--primary); box-shadow: none; }
   .btn.light:hover{ box-shadow: 0 14px 30px rgba(0,0,0,0.25); }
+
+  /* ---- reduced motion ---- */
+  @media (prefers-reduced-motion: reduce){
+    *{ transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
 </style>
 <script>
 (function(){

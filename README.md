@@ -51,6 +51,22 @@ whole property value. Caught and fixed before shipping; worth remembering if add
 tokens later — insert the variable and verify it renders in the browser before wiring up
 `var()` references to it.
 
+Every element that gets the hover glow/lift also has a matching keyboard equivalent: `.btn`
+(and its `.small`/`.outline`/`.light` variants) get `:focus-visible`, and cards whose only
+focusable content is a child element (`.faq-item`, `.reviews-card`, `.contact-card`,
+`.note-box`, invite's `.card`) use `:focus-within` instead, since the card itself isn't
+focusable. `.post-card` is itself an `<a>`, so it gets `:focus-visible` directly. Purely
+decorative tiles with no focusable children (`.why-card`, `.habit-card`, `.science-card`,
+`.feature-card`, `.status-card`) were deliberately left without a focus state — there's nothing
+inside them a keyboard user could ever tab to, so a rule there would be dead code. All of the
+above respects `prefers-reduced-motion: reduce` (added globally per page), which collapses
+every transition/animation to near-zero duration for users who've asked for it, including the
+homepage's `scroll-behavior: smooth`.
+
+The six below-the-fold screenshot images in `index.html`'s "showcase" section (`Today`/`Stats`/
+`History`) use `loading="lazy"`. The two hero phone images above the fold intentionally don't —
+lazy-loading a likely LCP (Largest Contentful Paint) candidate can delay it instead of helping.
+
 ## Security headers
 
 `_headers` now sets site-wide `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`,

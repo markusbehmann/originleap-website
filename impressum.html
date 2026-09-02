@@ -126,12 +126,23 @@
   .compare-note{font-size:11px; color:var(--ink-faint); margin:12px 0 0;}
   .footer-divider{border:none; border-top:1px solid var(--nav-border); margin:0 0 32px;}
 
+  /* ---- focus-visible (keyboard) ---- */
+  .btn:focus-visible{ outline: 2px solid rgba(145,83,255,0.7); outline-offset: 3px; transform: translateY(-2px); box-shadow: 0 14px 34px rgba(108,93,224,0.5); }
+  .btn.small:focus-visible{ box-shadow: 0 10px 26px rgba(108,93,224,0.5); }
+  .btn.outline:focus-visible{ background: rgba(145,83,255,0.08); border-color: var(--primary); box-shadow: none; }
+  .btn.light:focus-visible{ box-shadow: 0 14px 30px rgba(0,0,0,0.25); }
+
   /* ---- hover polish ---- */
   .btn{ transition: transform .2s ease, box-shadow .2s ease; }
   .btn:hover{ transform: translateY(-2px); box-shadow: 0 14px 34px rgba(108,93,224,0.5); }
   .btn.small:hover{ box-shadow: 0 10px 26px rgba(108,93,224,0.5); }
   .btn.outline:hover{ background: rgba(145,83,255,0.08); border-color: var(--primary); box-shadow: none; }
   .btn.light:hover{ box-shadow: 0 14px 30px rgba(0,0,0,0.25); }
+
+  /* ---- reduced motion ---- */
+  @media (prefers-reduced-motion: reduce){
+    *{ transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
 </style>
 <script>
 (function(){
